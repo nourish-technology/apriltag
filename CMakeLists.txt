@@ -87,7 +87,7 @@ if(NOT ignorePython)
         COMMAND ${CMAKE_C_COMPILER} ${CMAKE_C_FLAGS} ${PY_CFLAGS} -I${PROJECT_BINARY_DIR} -c -o apriltag_pywrap.o ${CMAKE_SOURCE_DIR}/apriltag_pywrap.c
         DEPENDS ${CMAKE_SOURCE_DIR}/apriltag_pywrap.c ${PROJECT_BINARY_DIR}/apriltag_detect.docstring.h ${PROJECT_BINARY_DIR}/apriltag_py_type.docstring.h)
     add_custom_command(OUTPUT apriltag${PY_EXT_SUFFIX}
-        COMMAND ${PY_LINKER} ${PY_LDFLAGS} -Wl,-rpath=lib apriltag_pywrap.o ${LIB_APRILTAG_PATH}/libapriltag.so -o apriltag${PY_EXT_SUFFIX}
+        COMMAND ${PY_LINKER} ${PY_LDFLAGS} -Wl,-rpath,lib apriltag_pywrap.o ${LIB_APRILTAG_PATH}/libapriltag${CMAKE_SHARED_LIBRARY_SUFFIX} -o apriltag${PY_EXT_SUFFIX}
         DEPENDS ${PROJECT_NAME} apriltag_pywrap.o)
     add_custom_target(apriltag_python ALL
         DEPENDS apriltag${PY_EXT_SUFFIX})
