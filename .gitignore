@@ -5,3 +5,10 @@
 example/opencv_demo
 example/apriltag_demo
 
+# IDE
+.idea
+cmake-build-debug/
+
+
+
+
